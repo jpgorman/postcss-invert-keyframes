@@ -1,0 +1,39 @@
+{
+  "name": "invert-keyframes",
+  "version": "0.0.1",
+  "description": "Postcss plugin to allow for keyframes to be inverted.",
+  "main": "./dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "build-watch": "babel src --watch --out-dir dist",
+    "test": "mocha --compilers js:babel-register",
+    "test-watch": "mocha --watch --compilers js:babel-register",
+    "eslint": "eslint **/*.js",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "postcss-plugin",
+    "flip",
+    "css",
+    "animation"
+  ],
+  "author": "JP Gorman",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-stage-1": "^6.3.13",
+    "babel-eslint": "^5.0.0",
+    "eslint": "^1.7.2",
+    "mocha": "^2.3.4",
+    "babel-register": "^6.8.0",
+    "chai": "^3.5.0"
+  },
+  "dependencies": {
+    "postcss": "^5.0.21"
+  }
+}
