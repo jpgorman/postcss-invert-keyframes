@@ -1,4 +1,8 @@
 #!/bin/bash
-echo git pre-push:running unit tests and linting.
-npm test && npm eslint
-exit
+set -e
+
+echo git pre-push: unit tests
+npm run test
+
+echo git pre-push: linting
+npm run lint
