@@ -1,0 +1,23 @@
+.foo {
+  background: red;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  animation: test 1s;
+  animation-timing-function: cubic-bezier(.46,1.21,.81,1.25);
+  animation-fill-mode: forwards;
+}
+.foo.inverted {
+  animation-name: test-inverted;
+}
+
+@-invert-keyframes test{
+  from{
+    transform: translate3d(0, 0, 0);
+  }
+  to{
+    transform: translate3d(150px, 0, 0);
+  }
+}

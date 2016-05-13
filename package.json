@@ -16,8 +16,9 @@
     "build-watch": "babel src --watch --out-dir dist",
     "test": "mocha --compilers js:babel-register",
     "test-watch": "mocha --watch --compilers js:babel-register",
-    "eslint": "eslint **/*.js --ignore-pattern dist/*.js --no-ignore",
-    "prepublish": "npm run build"
+    "eslint": "eslint src/*.js test/*.js",
+    "prepublish": "npm run build",
+    "serve": "resources/scripts/start-webpack.sh"
   },
   "keywords": [
     "postcss-plugin",
@@ -29,14 +30,23 @@
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.3.26",
-    "babel-loader": "^6.2.0",
+    "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-stage-1": "^6.3.13",
     "babel-eslint": "^5.0.0",
+    "css-loader": "^0.18.0",
     "eslint": "^1.7.2",
     "mocha": "^2.3.4",
     "babel-register": "^6.8.0",
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "postcss-loader": "^0.9.1",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.12.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "style-loader": "^0.13.1",
+    "autoprefixer": "^6.3.6",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2"
   },
   "dependencies": {
     "postcss": "^5.0.21"

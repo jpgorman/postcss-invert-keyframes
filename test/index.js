@@ -22,7 +22,7 @@ describe("invert-animation plugin", () => {
 
     it("should invert keyframes using from/to format", () => {
 
-      const fixtureA = `@keyframes-reversable test {
+      const fixtureA = `@-invert-keyframes test {
         from {
           left: 0;
         }
@@ -42,7 +42,7 @@ describe("invert-animation plugin", () => {
         }
       }
 
-      @keyframes test-reversed {
+      @keyframes test-inverted {
         to {
           left: 0;
         }
@@ -58,7 +58,7 @@ describe("invert-animation plugin", () => {
 
     it("should invert keyframes using % format", () => {
 
-      const fixtureA = `@keyframes-reversable test {
+      const fixtureA = `@-invert-keyframes test {
         0%, 10%, 90% {
           left: 0;
           top: 0;
@@ -90,7 +90,7 @@ describe("invert-animation plugin", () => {
         }
       }
 
-      @keyframes test-reversed {
+      @keyframes test-inverted {
         100%, 90%, 10% {
           left: 0;
           top: 0;

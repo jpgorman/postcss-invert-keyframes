@@ -21,7 +21,7 @@ function addAtRules(root, name) {
 }
 
 function addRule(selector) {
-  return postcss.rule({selector, semicolon: true}) // ensure trailing semi-colon
+  return postcss.rule({selector, raws: { semicolon: true}}) // ensure trailing semi-colon
 }
 
 function addDeclaration(ruleToWalk, rules) {
@@ -35,10 +35,10 @@ function addDeclaration(ruleToWalk, rules) {
 module.exports = postcss.plugin("postcss-reverse-animation", () => {
 
   return (root) => {
-    root.walkAtRules(/(keyframes-reversable)$/, (rules) => {
+    root.walkAtRules(/(-invert-keyframes)$/, (rules) => {
 
       const atRuleOriginal = addAtRules(root, rules.params)
-      const atRuleOriginalReversed = addAtRules(root, `${rules.params}-reversed`)
+      const atRuleOriginalReversed = addAtRules(root, `${rules.params}-inverted`)
 
       // add css comment
       root.prepend({ text: "Inverted keyframes" })
