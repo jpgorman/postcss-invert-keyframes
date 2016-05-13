@@ -8,6 +8,10 @@
   animation: test 1s;
   animation-timing-function: cubic-bezier(.46,1.21,.81,1.25);
   animation-fill-mode: forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 .foo.inverted {
   animation-name: test-inverted;

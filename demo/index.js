@@ -25,7 +25,7 @@ const App = React.createClass({
       <div
         onClick={this.handler}
         className={`foo ${className}`}
-      />
+      >Click Me</div>
     )
   },
 
