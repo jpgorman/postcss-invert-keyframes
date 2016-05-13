@@ -15,7 +15,7 @@
     "build-watch": "babel src --watch --out-dir dist",
     "test": "mocha --compilers js:babel-register",
     "test-watch": "mocha --watch --compilers js:babel-register",
-    "eslint": "eslint **/*.js",
+    "eslint": "eslint **/*.js --ignore-pattern dist/*.js --no-ignore",
     "prepublish": "npm run build"
   },
   "keywords": [

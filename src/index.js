@@ -2,7 +2,7 @@ import postcss from "postcss"
 
 const invertFromSelectorMap = {
   "to": "from",
-  "from": "to"
+  "from": "to",
 }
 
 function invertPercentageSelector(percent) {
@@ -20,35 +20,40 @@ function addAtRules(root, name) {
   return newAtRule
 }
 
-function addRule (selector) {
-  return postcss.rule({selector: selector , semicolon: true}) // ensure trailing semi-colon
+function addRule(selector) {
+  return postcss.rule({selector, semicolon: true}) // ensure trailing semi-colon
+}
+
+function addDeclaration(ruleToWalk, rules) {
+  ruleToWalk.walkDecls((decl) => {
+    rules.map((rule) => {
+      rule.append(postcss.decl({prop: decl.prop, value: decl.value}))
+    })
+  })
 }
 
 module.exports = postcss.plugin("postcss-reverse-animation", () => {
 
-  return (root, result) => {
+  return (root) => {
     root.walkAtRules(/(keyframes-reversable)$/, (rules) => {
 
       const atRuleOriginal = addAtRules(root, rules.params)
       const atRuleOriginalReversed = addAtRules(root, `${rules.params}-reversed`)
 
-      root.prepend({ text: 'Inverted keyframes' })
+      // add css comment
+      root.prepend({ text: "Inverted keyframes" })
 
-      rules.walkRules( (rule)  => {
+      rules.walkRules((rule)  => {
         const newRule = addRule(rule.selector)
         const newRuleRevered = addRule(invertSelector(rule.selector))
 
-        rule.walkDecls( (decl) => {
-          const declaration = postcss.decl({prop: decl.prop, value: decl.value})
-          newRule.append(declaration)
-          newRuleRevered.append(declaration)
-        })
+        addDeclaration(rule, [newRule, newRuleRevered])
 
         atRuleOriginal.append(newRule)
         atRuleOriginalReversed.append(newRuleRevered)
       })
 
-      // remove original
+      // keyframes-reversable from output
       rules.remove()
     })
   }
