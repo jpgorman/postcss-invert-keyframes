@@ -12,9 +12,21 @@
   align-items: center;
   justify-content: center;
   color: white;
+  border-radius: 50%;
 }
+
 .foo.inverted {
   animation-name: test-inverted;
+}
+
+.label {
+  position: absolute;
+  bottom: -50px;
+  color: black;
+  width: 200%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%);
 }
 
 @-invert-keyframes test{
