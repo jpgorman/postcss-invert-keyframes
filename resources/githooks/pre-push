@@ -5,4 +5,4 @@ echo git pre-push: unit tests
 npm run test
 
 echo git pre-push: linting
-npm run lint
+npm run eslint
