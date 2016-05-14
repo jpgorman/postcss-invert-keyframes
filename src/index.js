@@ -10,7 +10,7 @@ function invertPercentageSelector(percent) {
 }
 
 function invertSelector(selector) {
-  return invertFromSelectorMap[selector] || invertPercentageSelector(selector)
+  return invertFromSelectorMap.hasOwnProperty(selector) ? invertFromSelectorMap[selector] : invertPercentageSelector(selector)
 }
 
 function cloneRule(ruleToClone, newRule) {
