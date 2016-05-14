@@ -32,7 +32,7 @@ function addDeclaration(ruleToWalk, rules) {
   })
 }
 
-module.exports = postcss.plugin("postcss-reverse-animation", () => {
+module.exports = postcss.plugin("postcss-invert-keyframes", () => {
 
   return (root) => {
     root.walkAtRules(/(-invert-keyframes)$/, (rules) => {
