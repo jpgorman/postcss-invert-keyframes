@@ -18,7 +18,7 @@
     "test-watch": "mocha --watch --compilers js:babel-register",
     "eslint": "eslint src/*.js test/*.js",
     "prepublish": "npm run build",
-    "serve": "resources/scripts/start-webpack.sh"
+    "demo": "resources/scripts/start-webpack.sh"
   },
   "keywords": [
     "postcss-plugin",

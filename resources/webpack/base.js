@@ -12,8 +12,7 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/dist/',
+    publicPath: '/',
     filename: 'app.js',
   },
 
@@ -21,7 +20,7 @@ module.exports = {
   devtool: 'source-map',
 
   resolve: {
-    modulesDirectories: ['node_modules', './demo'],
+    modulesDirectories: ['node_modules'],
     extensions: ['', '.js'],
   },
 
