@@ -13,48 +13,51 @@ function invertSelector(selector) {
   return invertFromSelectorMap[selector] || invertPercentageSelector(selector)
 }
 
-function addAtRules(root, name) {
-
-  const newAtRule = postcss.atRule({name: `keyframes`, params: `${name}` })
-  root.append(newAtRule)
-  return newAtRule
+function cloneRule(ruleToClone, newRule) {
+  ruleToClone.parent.insertBefore(ruleToClone, newRule)
+  newRule.source = ruleToClone.source
+  return newRule
 }
 
-function addRule(selector) {
+function addAtRules(atrule, name) {
+
+  const newAtRule = postcss.atRule({name: `keyframes`, params: `${name}` })
+  return cloneRule(atrule, newAtRule)
+}
+
+function addRule(rule, selector) {
   return postcss.rule({selector, raws: { semicolon: true}}) // ensure trailing semi-colon
 }
 
 function addDeclaration(ruleToWalk, rules) {
   ruleToWalk.walkDecls((decl) => {
-    rules.map((rule) => {
-      rule.append(postcss.decl({prop: decl.prop, value: decl.value}))
-    })
+    rules.map((rule) => rule.append(decl.clone({ prop: decl.prop })))
   })
 }
 
 module.exports = postcss.plugin("postcss-invert-keyframes", () => {
 
   return (root) => {
-    root.walkAtRules(/(-invert-keyframes)$/, (rules) => {
+    root.walkAtRules(/(-invert-keyframes)$/, (atrule) => {
 
-      const atRuleOriginal = addAtRules(root, rules.params)
-      const atRuleOriginalReversed = addAtRules(root, `${rules.params}-inverted`)
+      const atRuleNew = addAtRules(atrule, atrule.params)
+      const atRuleNewReversed = addAtRules(atrule, `${atrule.params}-inverted`)
 
       // add css comment
       root.prepend({ text: "Inverted keyframes" })
 
-      rules.walkRules((rule)  => {
-        const newRule = addRule(rule.selector)
-        const newRuleRevered = addRule(invertSelector(rule.selector))
+      atrule.walkRules((rule)  => {
+        const newRule = addRule(rule, rule.selector)
+        const newRuleRevered = addRule(rule, invertSelector(rule.selector))
 
         addDeclaration(rule, [newRule, newRuleRevered])
 
-        atRuleOriginal.append(newRule)
-        atRuleOriginalReversed.append(newRuleRevered)
+        atRuleNew.append(newRule)
+        atRuleNewReversed.append(newRuleRevered)
       })
 
       // keyframes-reversable from output
-      rules.remove()
+      atrule.remove()
     })
   }
 })
