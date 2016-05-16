@@ -1,8 +1,16 @@
 [![Build Status](https://travis-ci.org/jpgorman/postcss-invert-keyframes.svg?branch=master)](https://travis-ci.org/jpgorman/postcss-invert-keyframes)
+
+#PostCSS plugin invert-keyframes
 [PostCSS] plugin that copies as set of keyframes, copies them and then adds an inverted version so that the animation can be reversed.
 
 [PostCSS]: https://github.com/postcss/postcss
 
+#Installation
+```sh
+npm i postcss-invert-keyframes --save-dev
+```
+
+#Example
 ```css
 /* Input example */
 @-invert-keyframes test {
