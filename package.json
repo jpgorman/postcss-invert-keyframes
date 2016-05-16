@@ -14,8 +14,8 @@
     "copy-githooks": "./resources/scripts/copy-githooks.sh",
     "build": "babel src --out-dir dist",
     "build-watch": "babel src --watch --out-dir dist",
-    "test": "mocha --compilers js:babel-register",
-    "test-watch": "mocha --watch --compilers js:babel-register",
+    "test": "mocha --compilers js:babel-register -R dot",
+    "test-watch": "mocha --watch --compilers js:babel-register -R dot",
     "eslint": "eslint src/*.js test/*.js",
     "prepublish": "npm run build",
     "demo": "resources/scripts/start-webpack.sh"
