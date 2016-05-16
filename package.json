@@ -22,9 +22,11 @@
   },
   "keywords": [
     "postcss-plugin",
+    "postcss plugin keyframes invert",
     "keyframes",
     "css",
-    "animation"
+    "animation",
+    "postcss-invert-keyframes"
   ],
   "author": "JP Gorman",
   "license": "ISC",
