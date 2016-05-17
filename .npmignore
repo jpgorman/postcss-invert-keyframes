@@ -3,6 +3,6 @@ resources
 src
 test
 .babelrc
-.eslint
+.eslintrc
 .gitignore
 .travis.yml
