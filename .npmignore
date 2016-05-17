@@ -1,1 +1,8 @@
+demo
+resources
 src
+test
+.babelrc
+.eslint
+.gitignore
+.travis.yml
