@@ -53,6 +53,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
-    "postcss": "^5.0.21"
+    "postcss": "^5.0.21",
+    "babel-cli": "^6.8.0"
   }
 }
