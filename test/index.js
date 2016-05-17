@@ -1,5 +1,5 @@
 import chai from "chai"
-import plugin from "../src/index"
+import plugin from "../dist/index"
 import postcss from "postcss"
 const expect = chai.expect
 

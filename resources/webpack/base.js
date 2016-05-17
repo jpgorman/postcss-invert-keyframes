@@ -1,5 +1,5 @@
 require('babel-core/register');
-var invertKeyframes = require('../../src/index');
+var invertKeyframes = require('../../dist/index');
 var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
